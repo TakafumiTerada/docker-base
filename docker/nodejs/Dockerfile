@@ -1,0 +1,5 @@
+FROM node:15.13
+
+ENV NODE_ENV=development
+WORKDIR /jsapp
+EXPOSE 3000

@@ -41,3 +41,14 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
     networks:
       - project_bridge
+
+  nodejs:
+    container_name: ${COMPOSE_PROJECT_NAME}_nodejs
+    build: ./nodejs
+    ports:
+      - ${NODEJS_PORT}:3000
+    volumes:
+      - ../src/nodejs:/jsapp
+    tty: true
+    networks:
+      - project_bridge
