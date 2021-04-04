@@ -13,7 +13,7 @@ services:
       - ${WEB_HTTP_PORT}:80
       - ${WEB_SSL_PORT}:443
     volumes:
-      - ../src/app:/var/www/html
+      - ${APP_SOURCE_DIRECTORY}:/var/www/html
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     networks:
       - project_bridge
@@ -22,7 +22,7 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}_app
     build: ./php-fpm
     volumes:
-      - ../src/app:/var/www/html
+      - ${APP_SOURCE_DIRECTORY}:/var/www/html
       - ./php-fpm/php.ini:/usr/local/etc/php/conf.d/php.ini
     networks:
       - project_bridge
@@ -48,7 +48,7 @@ services:
     ports:
       - ${NODEJS_PORT}:3000
     volumes:
-      - ../src/nodejs:/jsapp
+      - ${NODEJS_SOURCE_DIRECTORY}:/jsapp
     tty: true
     networks:
       - project_bridge
